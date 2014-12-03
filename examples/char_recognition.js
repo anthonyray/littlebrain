@@ -1,6 +1,6 @@
 var neural = require('../lib/network');
 
-var net = new neural.Network();
+var network = new neural.Network();
 
 network.addLayer(10, 20); // Hidden layer
 network.addLayer(2);     // Output layer
@@ -40,7 +40,8 @@ var three =
   1, 1, 1, 1  ];
 
 // Training the network
-net.train([
+
+network.train([
   [ zero,   [0,0] ],
   [ one,    [0,1] ],
   [ two,    [1,0] ],
