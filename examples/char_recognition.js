@@ -47,9 +47,10 @@ network.train([
   [ three,  [1,1] ]
 ]);
 
-
+console.log("Done training");
 var outputs = network.process(zero)
 
+console.log("Done processing");
 var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
 var decimal = parseInt(binary, 2)
 
