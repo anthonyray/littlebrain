@@ -3,7 +3,7 @@ var neural = require('../lib/network');
 var network = new neural.Network();
 
 network.addLayer(10, 20); // Hidden layer
-network.addLayer(2);     // Output layer
+network.addLayer(4);     // Output layer
 
 // Training data :
 
@@ -41,18 +41,27 @@ var three =
 
 // Training the network
 network.train([
-  [ zero,   [0,0] ],
-  [ one,    [0,1] ],
-  [ two,    [1,0] ],
-  [ three,  [1,1] ]
+  [ zero,   [0,0,0,0] ],
+  [ one,    [0,0,0,1] ],
+  [ two,    [0,0,1,0] ],
+  [ three,  [0,0,1,1] ]
 ]);
 
-console.log("Done training");
-var outputs = network.process(zero)
 
-console.log("Done processing");
+var outputs = network.process(zero)
 var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
 var decimal = parseInt(binary, 2)
-
 console.log("Recognized", decimal, outputs)
+
+var outputs = network.process(one)
+var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
+var decimal = parseInt(binary, 2)
+console.log("Recognized", decimal, outputs)
+
+var outputs = network.process(three)
+var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
+var decimal = parseInt(binary, 2)
+console.log("Recognized", decimal, outputs)
+
+
 console.log("DONE");
