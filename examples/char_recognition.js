@@ -1,67 +1,68 @@
-var neural = require('../lib/network');
+var neural = require('../lib/network')
+var network = new neural.Network()
 
-var network = new neural.Network();
+network.addLayer(10, 20) // Hidden layer, 10 neurons, 20 inputs
+network.addLayer(2)      // Output layer, 2 neurons
 
-network.addLayer(10, 20); // Hidden layer
-network.addLayer(4);     // Output layer
+// Our character "images". Imagine `1`s as black pixels.
+var zero = [
+0, 1, 1, 0,
+1, 0, 0, 1,
+1, 0, 0, 1,
+1, 0, 0, 1,
+0, 1, 1, 0
+]
 
-// Training data :
+var one = [
+0, 0, 1, 0,
+0, 0, 1, 0,
+0, 0, 1, 0,
+0, 0, 1, 0,
+0, 0, 1, 0
+]
 
-var zero =
-[
-  1, 1, 1, 1,
-  1, 0, 0, 1,
-  1, 0, 0, 1,
-  1, 0, 0, 1,
-  1, 1, 1, 1  ];
+var two = [
+0, 1, 1, 0,
+1, 0, 0, 1,
+0, 0, 1, 0,
+0, 1, 0, 0,
+1, 1, 1, 1
+]
 
-var one =
-  [
-  0, 0, 1, 0,
-  0, 1, 1, 0,
-  0, 0, 1, 0,
-  0, 0, 1, 0,
-  0, 1, 1, 1  ];
+var three = [
+1, 1, 1, 1,
+0, 0, 0, 1,
+0, 1, 1, 1,
+0, 0, 0, 1,
+1, 1, 1, 1
+]
 
-var two =
-  [
-  1, 1, 1, 1,
-  1, 0, 0, 1,
-  0, 0, 1, 0,
-  0, 1, 0, 0,
-  1, 1, 1, 1  ];
-
-var three =
-  [
-  1, 1, 1, 1,
-  0, 0, 0, 1,
-  0, 1, 1, 1,
-  0, 0, 0, 1,
-  1, 1, 1, 1  ];
-
-// Training the network
 network.train([
-  [ zero,   [0,0,0,0] ],
-  [ one,    [0,0,0,1] ],
-  [ two,    [0,0,1,0] ],
-  [ three,  [0,0,1,1] ]
-]);
+  // Training examples
+  // inputs   outputs
+  [  zero,    [0, 0]  ],
+  [  one,     [0, 1]  ],
+  [  two,     [1, 0]  ],
+  [  three,   [1, 1]  ],
+  ])
 
 
-var outputs = network.process(zero)
-var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
-var decimal = parseInt(binary, 2)
-console.log("Recognized", decimal, outputs)
+  // Querying the network
 
-var outputs = network.process(one)
-var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
-var decimal = parseInt(binary, 2)
-console.log("Recognized", decimal, outputs)
+  // outputs === [~1, ~0]
 
-var outputs = network.process(three)
-var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
-var decimal = parseInt(binary, 2)
-console.log("Recognized", decimal, outputs)
+  // Convert the output to binary (base 2) and then to decimal (base 10).
+  var outputs = network.process(zero)
+  var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
+  var decimal = parseInt(binary, 2)
+  console.log("Recognized", decimal, outputs)
 
+  var outputs = network.process(one)
+  var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
+  var decimal = parseInt(binary, 2)
+  console.log("Recognized", decimal, outputs)
 
-console.log("DONE");
+  var outputs = network.process(three)
+  var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
+  var decimal = parseInt(binary, 2)
+  console.log("Recognized", decimal, outputs)
