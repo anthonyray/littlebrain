@@ -66,3 +66,11 @@ network.train([
   var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
   var decimal = parseInt(binary, 2)
   console.log("Recognized", decimal, outputs)
+
+console.log("SERIALIZING THE NETWORK");
+console.log(network.serialize())
+var data = network.serialize();
+console.log("Creating a new neural net");
+var newnet = new neural.Network();
+newnet.deserialize(20,data);
+console.log(newnet.serialize());
