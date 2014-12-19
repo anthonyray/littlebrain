@@ -37,6 +37,20 @@ var three = [
 1, 1, 1, 1
 ]
 
+var three_one = [1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1];
+var three_two = [0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1];
+var three_three = [1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1];
+
+var two_one = [1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1];
+var two_two = [1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1];
+var two_three = [1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1];
+
+var one_one = [0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1];
+var one_two = [0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
+var one_three = [0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1];
+
+var zero_one = [0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0];
+
 network.train([
   // Training examples
   // inputs   outputs
@@ -44,33 +58,33 @@ network.train([
   [  one,     [0, 1]  ],
   [  two,     [1, 0]  ],
   [  three,   [1, 1]  ],
+  [ one_one , [0,1] ],
+  [ one_two , [0,1] ],
+  [ one_three , [0,1] ],
+  [ two_one , [1,0] ],
+  [ two_two , [1,0] ],
+  [ two_three , [1,0] ],
+  [ three_one , [1,1] ],
+  [ three_two , [1,1] ],
+  [ three_three , [1,1] ],
+  [ zero_one, [0,0]]
   ])
 
 
-  // Querying the network
+// Convert the output to binary (base 2) and then to decimal (base 10).
+var outputs = network.process(zero)
+var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
+var decimal = parseInt(binary, 2)
+console.log("Digit recognized : ", decimal, outputs)
 
-  // outputs === [~1, ~0]
+var outputs = network.process(one)
+var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
+var decimal = parseInt(binary, 2)
+console.log("Digit recognized :", decimal, outputs)
 
-  // Convert the output to binary (base 2) and then to decimal (base 10).
-  var outputs = network.process(zero)
-  var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
-  var decimal = parseInt(binary, 2)
-  console.log("Recognized", decimal, outputs)
+var outputs = network.process(three)
+var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
+var decimal = parseInt(binary, 2)
+console.log("Digit recognized :", decimal, outputs)
 
-  var outputs = network.process(one)
-  var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
-  var decimal = parseInt(binary, 2)
-  console.log("Recognized", decimal, outputs)
-
-  var outputs = network.process(three)
-  var binary  = outputs.map(function(v) { return Math.round(v) }).join("")
-  var decimal = parseInt(binary, 2)
-  console.log("Recognized", decimal, outputs)
-
-console.log("SERIALIZING THE NETWORK");
-console.log(network.serialize())
-var data = network.serialize();
-console.log("Creating a new neural net");
-var newnet = new neural.Network();
-newnet.deserialize(20,data);
-console.log(newnet.serialize());
+console.log(network.serialize());
