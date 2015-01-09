@@ -22,7 +22,7 @@ network.addLayer(10, 20) // Hidden layer, 10 neurons, 20 inputs
 network.addLayer(2)      // Output layer, 2 neurons
 ```
 
-It is now time to train the neural network with training data. The training method uses the backpropagation algorithm. Careful ! this method can take time ... 
+It is now time to train the neural network with training data. The training method uses the backpropagation algorithm. Careful ! this method can take time ...
 
 Two stop conditions are implemented :
 
@@ -47,3 +47,13 @@ var outputs = network.process(zero);
 
 ## Example
 I made a website that uses this neural network to predict a drawn digit between 0 and 3. You can check it out [here](http://reinette.io/littlebrain) !
+
+## Serialization
+Instead of training the neural network everytime, I added a function to serialize/deserialize the neural network for later use.
+
+```javascript
+network.serialize();
+
+// The deserialization needs to know how many inputs the neural network has. This is the first argument of the method.
+network.deserialize(20,data);
+```
