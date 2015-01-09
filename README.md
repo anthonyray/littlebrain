@@ -1,7 +1,7 @@
 # LittleBrain
 
 A simple implementation of a multi-layer neural network using backpropagation algorithm in javascript.
-
+See this library in action [here](http://reinette.io/littlebrain) !
 ## API
 
 To instantiate a new neural network, just require the network class in the library.
@@ -57,3 +57,6 @@ network.serialize();
 // The deserialization needs to know how many inputs the neural network has. This is the first argument of the method.
 network.deserialize(20,data);
 ```
+
+## About
+Feel free to contribute !
