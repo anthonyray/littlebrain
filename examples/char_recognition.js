@@ -50,6 +50,8 @@ var one_two = [0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0];
 var one_three = [0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1];
 
 var zero_one = [0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0];
+var zero_two = [0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1];
+var zero_three  = [1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0];
 
 network.train([
   // Training examples
@@ -67,7 +69,9 @@ network.train([
   [ three_one , [1,1] ],
   [ three_two , [1,1] ],
   [ three_three , [1,1] ],
-  [ zero_one, [0,0]]
+  [ zero_one, [0,0]     ],
+  [zero_two, [0,0]],
+  [zero_three,[0,0]]
   ])
 
 
