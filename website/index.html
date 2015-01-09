@@ -1,0 +1,174 @@
+<html>
+
+    <head>
+
+        <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="css/ripples.min.css" rel="stylesheet">
+        <link href="css/material-wfont.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="bower_components/animate.css/animate.css" media="screen" title="no title" charset="utf-8">
+        <style>
+
+          .row-centered {
+            text-align:center;
+          }
+          .col-centered {
+            display:inline-block;
+            float:none;
+            /* reset the text-align */
+            text-align:left;
+            /* inline-block space fix */
+            margin-right:-4px;
+          }
+
+          #matrix{
+            width : 100%;
+          }
+
+          #matrix td{
+            width : 25%;
+            height : 50px;
+            border-style : solid;
+          }
+
+          #matrix td:hover{
+            background-color : rgba(0, 149, 135,0.3);
+          }
+
+          .digit{
+            background-color : #009587;
+          }
+
+          .title{
+            color : white;
+          }
+
+          .matrixcontainer{
+            width : 200px;
+            text-align : center;
+          }
+
+          .matrixcontainer button{
+            margin : 10 auto;
+          }
+
+        </style>
+
+    </head>
+    <a href="https://github.com/anthonyray/littlebrain"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:1000;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <body>
+
+        <!-- The site -->
+
+          <div class="navbar navbar-default">
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+              <h1 class="title text-center"> <img src="images/brain2.svg"></svg> Little Brain </h1>
+            </div>
+          </div>
+
+        <div class="container">
+
+          <div class="row row-centered">
+            <div class="col-xs-6 col-centered">
+              <h2> The project </h2>
+              <p>Little brain is a simple implementation of a multi layer neural network using backpropagation algorithm in javascript. The neural network was trained before being put online.
+                This neural network is able to recognize digits <b>between 0 and 3</b> drawn on a 4 x 5 pixels matrix. </p>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row row-centered">
+            <div class="col-xs-6 col-centered">
+              <h2> About the neural network</h2>
+              <p> You can find the code on my github profile : <a href="https://github.com/anthonyray/littlebrain">here</a>. Don't hesitate to fork, make a pull request, or open an issue ! </p>
+              <p> This neural network is made of two layers : one input layer and one output layer.
+              <p> The input layer has 20 neurons. Each neuron correspond to one pixel of the drawing matrix. </p>
+              <p> The output layer has 2 neurons. We want our neural network to predict a number between 0 and 3. If we consider the output of each neuron as a bit value, the output layer produces a number between 0 and 3. </p>
+              <p> The neural network was trained using the backpropagation algorithm. </p>
+              <h2> Time to draw !</h2>
+              <p> Draw a number between <b>0 and 3</b> and see if the neural network can guess which number it is. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row row-centered">
+            <div class="col-xs-2 col-centered text-centered">
+              <div class="matrixcontainer">
+              <div class="text-centered">
+              <button href="javascript:void(0)" class="btn btn-warning" id="clear">Clear</button>
+            </div>
+
+            <table id="matrix">
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+            </table>
+
+            <a href="javascript:void(0)" class="btn btn-primary" id="guess">Guess !</a>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row row-centered">
+            <h1> Guessed number : <b id="guessednumber"></b> </h1>
+            <a href="javascript:void(0)" id="tryagain" class="btn btn-primary">Try again ?</a>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row row-centered">
+            <div class="col-xs-6 col-centered">
+            <h2> Going further </h2>
+            <p>The neural net does not works perfectly for the moment ... I think it's lacking training data, and also more precise tuning. </p>
+            <p> You can find the code on my github profile : <a href="https://github.com/anthonyray/littlebrain">here</a>. </p>
+
+            <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+          </div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <!-- Your site ends -->
+        <script src="js/bundle.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="js/ripples.min.js"></script>
+        <script src="js/material.min.js"></script>
+
+
+    </body>
+
+</html>
